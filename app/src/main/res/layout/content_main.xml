@@ -21,6 +21,14 @@
         android:textOff="Start game"
         android:textOn="Stop game"/>
 
+    <Button
+        android:id="@+id/button_go_to_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="Go to room"
+        android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_games"
         android:layout_width="match_parent"

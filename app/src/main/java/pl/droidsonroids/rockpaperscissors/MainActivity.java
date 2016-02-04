@@ -9,17 +9,21 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements EndpointDiscoveryListener, GameHostListener, GameClientListener {
 
     @Bind(R.id.recycler_games) RecyclerView mGamesRecycler;
     @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.button_go_to_room) Button mButtonGoToRoom;
 
     private NearbyManager mNearbyManager;
 
@@ -116,14 +120,22 @@ public class MainActivity extends AppCompatActivity implements EndpointDiscovery
     public void startGame(final CompoundButton view, final boolean checked) {
         if (checked) {
             mNearbyManager.startGame();
+            mButtonGoToRoom.setVisibility(View.VISIBLE);
         } else {
             mNearbyManager.stopGame();
+            mButtonGoToRoom.setVisibility(View.GONE);
         }
+    }
+
+    @OnClick(R.id.button_go_to_room)
+    void onGoToRoomClicked() {
+        GameRoomActivity.startActivity(this, true);
     }
 
     @Override
     public void onHostConnected(final Endpoint endpoint) {
-        mNearbyManager.sendMessageToHost("Hello host!");
+        GameRoomActivity.startActivity(this, false);
+        finish();
     }
 
     @Override
