@@ -14,11 +14,12 @@
     tools:context="pl.droidsonroids.rockpaperscissors.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <Button
+    <ToggleButton
         android:id="@+id/button_start_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start game"/>
+        android:textOff="Start game"
+        android:textOn="Stop game"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_games"
