@@ -115,7 +115,8 @@ public class NearbyManager implements GoogleApiClient.ConnectionCallbacks, Googl
 
         if (mGameClientListener != null) {
             mGameClientListener.onMessageReceived(message);
-        } else if (mGameHostListener != null) {
+        }
+        if (mGameHostListener != null) {
             mGameHostListener.onMessageReceived(message);
         }
     }
@@ -254,7 +255,7 @@ public class NearbyManager implements GoogleApiClient.ConnectionCallbacks, Googl
         sendMessage(endpointIds, message);
     }
 
-    public void sendMessageToHost(final String message) {
+    public void sendMessageToServer(final String message) {
         sendMessage(mHostEndpoint, message);
     }
 

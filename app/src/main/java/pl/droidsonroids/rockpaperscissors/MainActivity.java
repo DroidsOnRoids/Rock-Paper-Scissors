@@ -22,7 +22,6 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements EndpointDiscoveryListener, GameHostListener, GameClientListener {
 
     @Bind(R.id.recycler_games) RecyclerView mGamesRecycler;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.button_go_to_room) Button mButtonGoToRoom;
 
     private NearbyManager mNearbyManager;
@@ -47,8 +46,6 @@ public class MainActivity extends AppCompatActivity implements EndpointDiscovery
         mGamesRecycler.setLayoutManager(new LinearLayoutManager(this));
         mGamesRecycler.setAdapter(mGamesAdapter);
 
-        setSupportActionBar(mToolbar);
-
         NearbyManager.initialize(this);
 
         mNearbyManager = NearbyManager.getInstance();
@@ -66,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements EndpointDiscovery
     @Override
     protected void onStop() {
         super.onStop();
-        mNearbyManager.disconnect();
     }
 
     @Override

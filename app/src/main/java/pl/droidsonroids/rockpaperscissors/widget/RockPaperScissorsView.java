@@ -32,6 +32,8 @@ public class RockPaperScissorsView extends ImageView {
     public RockPaperScissorsView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
+        setScaleType(ScaleType.FIT_XY);
+        setImageResource(R.drawable.diagram);
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onSingleTapUp(final MotionEvent e) {
@@ -75,7 +77,7 @@ public class RockPaperScissorsView extends ImageView {
         return true;
     }
 
-    private void setOnUserChoiceListener(final OnUserChoiceListener onUserChoiceListener) {
+    public void setOnUserChoiceListener(final OnUserChoiceListener onUserChoiceListener) {
         mOnUserChoiceListener = onUserChoiceListener;
     }
 

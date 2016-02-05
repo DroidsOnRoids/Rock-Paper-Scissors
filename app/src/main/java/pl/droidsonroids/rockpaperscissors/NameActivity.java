@@ -27,12 +27,13 @@ public class NameActivity extends AppCompatActivity {
     }
 
     @OnEditorAction(R.id.edit_name)
-    void onNameInput(EditText editText, int keyCode, KeyEvent keyEvent) {
+    boolean onNameInput(EditText editText, int keyCode, KeyEvent keyEvent) {
         String name = editText.getEditableText().toString();
-        if (keyCode == KeyEvent.KEYCODE_ENTER && !TextUtils.isEmpty(name)) {
+        if (keyCode == KeyEvent.KEYCODE_ENDCALL && !TextUtils.isEmpty(name)) {
             UserPreferences.getInstance(this).setUserName(name);
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
+        return false;
     }
 }
